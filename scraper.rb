@@ -32,6 +32,6 @@ end
 morph_names = members.map { |w| w[:wikiname] }
 toget = morph_names | names.values.flatten.uniq
 
-toget.shuffle.each_slice(100) do |sliced|
+toget.shuffle.each_slice(50) do |sliced|
   EveryPolitician::Wikidata.scrape_wikidata(names: { en: sliced })
 end
