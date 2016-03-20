@@ -31,4 +31,4 @@ end
 
 morph_names = members.map { |w| w[:wikiname] }
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { en: morph_names | names.values.flatten.uniq.count })
+EveryPolitician::Wikidata.scrape_wikidata(names: { en: morph_names | names.values.flatten.uniq })
