@@ -21,12 +21,14 @@ end
 
 names = {}
 (97 .. 114).each do |cid|
+  url = "https://en.wikipedia.org/wiki/#{ActiveSupport::Inflector.ordinalize cid}_United_States_Congress"
   names[cid] = EveryPolitician::Wikidata.wikipedia_xpath( 
-    url: "https://en.wikipedia.org/wiki/#{ActiveSupport::Inflector.ordinalize cid}_United_States_Congress",
+    url: url,
     after: '//span[@id="Members"]',
     before: '//span[@id="House_of_Representatives_3"]',
     xpath: './/li//a[not(@class="new")]/@title',
   )
+  raise "No names at #{url}" if names[cid].empty?
 end
 
 morph_names = members.map { |w| w[:wikiname] }
