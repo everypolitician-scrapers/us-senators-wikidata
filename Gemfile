@@ -8,10 +8,7 @@ ruby '2.3.3'
 source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
-gem 'activesupport-inflector'
-gem 'colorize'
 gem 'everypolitician', github: 'everypolitician/everypolitician-ruby'
-gem 'i18n'
 gem 'mediawiki_api'
 gem 'nokogiri'
 gem 'open-uri-cached'
