@@ -29,4 +29,12 @@ wp_names = EveryPolitician::Wikidata.wikipedia_xpath(
 )
 raise "No names at #{url}" if wp_names.empty?
 
-EveryPolitician::Wikidata.scrape_wikidata(names: { en: morph_names | wp_names })
+sparq = <<EOQ
+  SELECT DISTINCT ?item WHERE {
+    ?item p:P39 [ ps:P39 wd:Q13217683 ; pq:P580 ?start ] .
+    FILTER (?start >= "1977-01-01T00:00:00Z"^^xsd:dateTime)
+  }
+EOQ
+ids = EveryPolitician::Wikidata.sparql(sparq)
+
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids, names: { en: morph_names | wp_names })
