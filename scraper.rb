@@ -31,4 +31,4 @@ sparq = <<EOQ
 EOQ
 ids = EveryPolitician::Wikidata.sparql(sparq)
 
-EveryPolitician::Wikidata.scrape_wikidata(ids: ids | morph)
+EveryPolitician::Wikidata.scrape_wikidata(ids: ids | morph, batch_size: 200)
