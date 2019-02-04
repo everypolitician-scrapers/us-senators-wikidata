@@ -9,17 +9,16 @@ source 'https://rubygems.org'
 git_source(:github) { |repo_name| "https://github.com/#{repo_name}.git" }
 
 gem 'everypolitician', github: 'everypolitician/everypolitician-ruby'
-gem 'mediawiki_api'
-gem 'nokogiri'
-gem 'open-uri-cached'
-gem 'pry'
-gem 'rest-client'
-gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby',
-                   branch: 'morph_defaults'
+gem 'everypolitician-popolo', github: 'everypolitician/everypolitician-popolo'
+gem 'scraperwiki', github: 'openaustralia/scraperwiki-ruby', branch: 'morph_defaults'
 gem 'sqlite_magic', github: 'openc/sqlite_magic'
-gem 'wikidata-fetcher', '>=0.20.2', github: 'everypolitician/wikidata-fetcher'
-gem 'wikisnakker', github: 'everypolitician/wikisnakker'
+gem 'wikidata-fetcher', github: 'everypolitician/wikidata-fetcher'
 
-group :quality do
+group :test do
   gem 'rubocop'
+end
+
+group :development do
+  gem 'derailed'
+  gem 'pry'
 end
